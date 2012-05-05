@@ -1,0 +1,49 @@
+<?php
+$includesDir="inc";
+$includesDir=getcwd()."/".$includesDir;
+$misInformEvil = "\nthe temp is 56\n";
+
+if($_POST['mode']=='updateAll') {
+	  $files= scandir($includesDir);
+		foreach($files as $file) { $fileParts=explode("_",$file); if(in_array("SAVED", $fileParts)) { $programNames[]=$fileParts[3]; }}	
+		unset($files,$file,$fileParts);
+	
+		}
+
+if(isset($_POST['mode']) || isset($_GET['mode']) ) {
+	if(isset($_POST['test']) ) { print "mode:".$_POST['mode']."\nroutine:".$_POST['routine']."\nfileName:".$_POST['fileName']."\n";;}
+
+
+	if($_POST['mode']=='emulateCommand' || $_GET['mode']=='emulateCommand') { $emulate=""; 
+			isset($_POST['emulate']) ? $emulate = $_POST['emulate'] : $emulate = $_GET['emulate'];
+			$myFile= $includesDir."/emulateCommand.txt"; file_put_contents($myFile,$emulate); print "emulate changed to ".$emulate;  
+	       die();                                                                   
+	}
+
+	if($_POST['mode']=='getProgramList' || $_GET['mode']=='getProgramList') {
+	  $files= scandir($includesDir);
+		foreach($files as $file) { $fileParts=explode("_",$file); if(in_array("SAVED", $fileParts)) { $programNames[]=$fileParts[3]; }}	
+		unset($files,$file,$fileParts);
+    foreach($programNames as $name) { print $name."\n"; }	
+    die();
+		}
+
+
+	if(isset($_POST['fileName'])) { 
+		$myFile=trim($_POST['fileName']);
+    $checkEvil=explode("/",$myFile);
+		count($checkEvil) > 1 ? $isEvil="yes" : $isEvil="no" ;
+	  if($isEvil=="yes") { print $misInformEvil; die(); }  
+	  if($isEvil=="no") {   
+			$myFile="inc/_SAVED_ROUTINES_".$myFile; 
+    	if($_POST['mode']=="openFile") { is_file($myFile) ? print file_get_contents($myFile) : print $myFile." does not exist\n"; }
+    	if($_POST['mode']=="deleteFile") { is_file($myFile) ? unlink($myFile) : print $myFile." does not exist\n"; 
+																			is_file($myFile) ? print "did not delete ".$myFile : print "deleted ".$myFile; }
+    	if($_POST['mode']=="saveAsFile") { is_file($myFile) ? print $myFile." already exists\n" : file_put_contents($myFile,$_POST['content']);}
+    	if($_POST['mode']=="saveFile") { file_put_contents($myFile,$_POST['content']); print "Saved your file ".$myFile."\n";}
+											}
+										}
+
+	}
+die();
+?>

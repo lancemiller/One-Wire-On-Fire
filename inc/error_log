@@ -1,0 +1,31 @@
+[27-Apr-2012 05:42:13] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[27-Apr-2012 05:42:13] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36
+[27-Apr-2012 05:54:01] PHP Warning:  opendir(/home/cyr/public_html/linuXautomation/inc/emulateFiles/*) [<a href='function.opendir'>function.opendir</a>]: failed to open dir: No such file or directory in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 21
+[27-Apr-2012 05:54:01] PHP Warning:  readdir(): supplied argument is not a valid Directory resource in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 23
+[27-Apr-2012 05:54:01] PHP Warning:  closedir(): supplied argument is not a valid Directory resource in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 33
+[27-Apr-2012 05:54:01] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[27-Apr-2012 05:54:01] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36
+[27-Apr-2012 05:55:17] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[27-Apr-2012 05:55:17] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36
+[27-Apr-2012 06:26:14] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[27-Apr-2012 06:26:14] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36
+[27-Apr-2012 06:31:11] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[27-Apr-2012 06:31:11] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36
+[27-Apr-2012 06:33:37] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[27-Apr-2012 06:33:37] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36
+[27-Apr-2012 06:36:00] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[27-Apr-2012 06:36:00] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36
+[27-Apr-2012 06:39:27] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[27-Apr-2012 06:39:27] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36
+[27-Apr-2012 06:39:43] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[27-Apr-2012 06:39:43] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36
+[27-Apr-2012 06:40:00] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[27-Apr-2012 06:40:00] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36
+[27-Apr-2012 06:41:13] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[27-Apr-2012 06:41:13] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36
+[27-Apr-2012 06:56:44] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[27-Apr-2012 06:56:44] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36
+[27-Apr-2012 06:57:41] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[27-Apr-2012 06:57:41] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36
+[27-Apr-2012 07:01:12] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[27-Apr-2012 07:01:12] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36

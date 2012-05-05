@@ -1,0 +1,134 @@
+<?php
+if(isset($_POST['mainWhileCanvas'])) { 
+
+if(isset($_POST['newProgramName'])) { 
+file_put_contents("_SAVED_ROUTINES_".$_POST['newProgramName'].".txt", "\n".$_POST['runtime']."\n".$_POST['mainWhileCanvas']);
+}}
+
+$files= scandir($includesDir);
+foreach($files as $file) { $fileParts=explode("_",$file); if(in_array("SAVED", $fileParts)) { $programNames[]=$fileParts[3]; }}	
+unset($files,$file,$fileParts);
+
+if($devicesB > 0) { ?>
+<table border="1"><tr>
+<td>
+<?php
+$default="&nbsp; &nbsp; &nbsp;";
+print "<span class=\"tiny\" >Open:</span>";
+// select3("openFiles", $programNames, $default);
+print "\n<select id=\"openFiles\">\t</select>\n";
+print "<span class=\"tiny\" >Save:</span>";
+print "\n<button id=\"saveFile\">".$default."</button>\n";
+print "<span class=\"tiny\" >Delete:</span>";
+print "\n<button id=\"deleteFile\">".$default."</button>\n";
+print "<button id=\"saveAsButton\" >Save As:</button>";
+print "\n<input type=\"text\" name=\"saveAs\" id=\"saveAs\" value=\"\" size=\"30\" \>\n";
+?>
+
+</td>
+</tr></table>
+<table border="1"><tr>
+<th width="200px">Devices</th>
+<th width="100px">Operators</th>
+<th width="1000px" align="center">Programming Compose Canvas</th>
+</tr>
+<tr><td align="center" valign="top">
+<?php
+foreach($devicesB as $key=>$value) { 
+print "\n<p class=\"draggables\" id=\"".$value."\" onclick=\"programCompose('".$value."')\">".$value."</p>\n"; 
+print "\n<script type=\"text/javascript\">\n";
+print "\n$('#".$value."').draggable({revert:true,ghosting:true,opacity:0.5});\n";
+print "\n</script>\n";
+}
+?>
+</td>
+<td align="center" valign="top">
+<?php
+$operatorsArray=array("IF","ELSE","WHILE", "AND", "OR", "IS", "NOT", "THEN","LESS","GREATER","ON","OFF");
+foreach($operatorsArray as $value) { 
+print "\n<p class=\"draggables\" id=\"".$value."\" onclick=\"programCompose('".$value."')\">".$value."</p>\n"; 
+print "\n<script type=\"text/javascript\">\n";
+print "\n$('#".$value."').draggable({revert:true,ghosting:true,opacity:0.5});\n";
+print "\n</script>\n";
+}
+
+print "\n<p class=\"draggables\">\n";
+$myRange=range(0,999);
+select3("myRange", $myRange, "0");
+print "</p>\n";
+print "\n<script type=\"text/javascript\">\n";
+print "\n$('#myRange').draggable({revert:true,ghosting:true,opacity:0.5});\n";
+print "\n</script>\n";
+
+?>
+
+</td>
+<td align="left" valign="top">
+<table width="100%" height="100%"><tr>
+<td align="left" valign="top">
+<table><tr>
+<td align="right" valign="top" class="lineNums">
+</td><td>
+WHILE
+</td><td>
+<input type="checkbox" name="infinity"  id="infinity" value="infinity" onchange="timeManager(this.value);" />INFINITY
+</td><td>
+<?php
+$mainWhileRange=range(0,7);
+select3("mainWhileDays", $mainWhileRange, "0");
+$mainWhileRange=range(0,24);
+select3("mainWhileHours", $mainWhileRange, "0");
+$mainWhileRange=range(0,60);
+select3("mainWhileMinutes", $mainWhileRange, "0");
+?>
+</td>
+<td><input type="text" id="runtime" name="runtime" value="0" size="9"></input><span style="font-size:50%">total runtime in minutes</span></td>
+</tr><tr>
+<td align="right" valign="top" class="lineNums" colspan="1">
+<?php
+foreach(range(1,1000) as $num) { print "\n<a name=\"programComposer".$num."\"></a><span class=\"lineNum\">\n".$num.".</span><br />"; }
+?>
+</td>
+<td align="left" valign="top" colspan="6">
+<?php isset($_POST['mainWhileCanvas']) ? $display="none" : $display="block"; ?> 
+<div id="programHelp" style="display:<?php print $display; ?>">
+<ol>
+<li>
+<p>Set main loop (area above) to a time limit or to infinity.</p> 
+</li><li>
+<p>Click or drag and drop <span class="draggables" style="padding:0px">DEVICES</span> and <span class="draggables" style="padding:0px">OPERATORS</span>.</p>
+</li><li>
+<p>When you click on <span class="draggables" style="padding:0px">DEVICES</span> and <span class="draggables" style="padding:0px">OPERATORS</span> they will be added to the Program Compose
+Canvas.</p>
+</li></ol>
+</div>
+<?php isset($_POST['mainWhileCanvas']) ? $display="block" : $display="none"; ?> 
+<textarea id="mainWhileCanvas" name="mainWhileCanvas" rows="1330" cols="60" wrap="hard" style="display:<?php print $display; ?>">
+<?php
+if(isset($_POST['mainWhileCanvas'])) { print $_POST['mainWhileCanvas']; }
+?>
+</textarea>
+</td>
+</tr></table>
+
+
+</td></tr></table>
+</td></tr></table>
+
+
+<input type="hidden" name="majorMode" value="program" />
+</form>
+<?php
+                   } 
+else { print "<span style=\"display:inline\">Please click <form action=\"\" method=\"\"><input type=\"hidden\" name=\"majorMode\" value=\"setup\"><input type=\"submit\" value=\"Setup\"></form> to assign nicknames for your devices<span>\n"; }
+
+
+?>
+
+
+
+
+
+
+
+

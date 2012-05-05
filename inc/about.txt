@@ -1,0 +1,51 @@
+<?php
+function linkFormat($input,$desc) {
+print "\n<a name=\"".$input."\"></a>\n";
+print "\n<li><p><a href=\"".$input."\" target=\"_blank\">".$input."</a>\n ".$desc."<p></li>\n";
+															}
+?>
+<div class="tiny">
+<p>
+Copyright (C) 2011 Lance Miller this.is.lance.miller@gmail.com 
+</p><p>
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+</p><p>
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details. 
+<br />
+<a href="inc/gpl-3.0.txt" target="_blank">[click to see complete copy of license document]</a>
+</p>
+</div>
+<h3><a href="inc/One-Wire-On-Fire.tar.gz">[download] One-Wire-On-Fire.tar.gz [download]</a></h3>
+<h3>Source code:</h3>
+<ul>
+<?php
+linkFormat("inc/","[DIR] Link to directory containing all text files referenced below.");
+linkFormat("inc/_ONE-WIRE-ON-FIRE_py.txt","[CLI PYTHON] This is the main file of the software suite. It is a command line Python program that accepts input set by the web interface and reads and writes to the 1wire ASCII interface.");    
+linkFormat("inc/index.txt","[WEB UI] Intitial PHP file that sets variables and includes masterControl.txt");
+linkFormat("inc/masterControl.txt","[WEB UI] Header and general HTML for page, executes php include of setup.txt, program.txt, run.txt, and about.txt files ");
+linkFormat("inc/setup.txt","[WEB UI] The PHP source for SETUP tab.");
+linkFormat("inc/program.txt","[WEB UI] The PHP source for PROGRAM tab.");
+linkFormat("inc/run.txt","[WEB UI] The PHP source for RUN tab.");
+linkFormat("inc/about.txt","[WEB UI] The PHP source for RUN tab.");
+linkFormat("inc/One-Wire-On-Fire.css","[WEB UI] CSS file.");
+linkFormat("inc/One-Wire-On-Fire.js","[WEB UI] Javascript file.");
+linkFormat("ajax.php","[PHP] Initial Ajax server side processing that sets variables and preps env before including /inc/ajax.txt.");
+linkFormat("inc/ajax.txt","[PHP] Core Ajax server side processing.");
+linkFormat("inc/functions.txt","[PHP] Custom PHP functions used in the PHP files listed above.");
+linkFormat("inc/devices.txt","[TXT/DB] Text file copy of 1wire ASCII interface -showing devices, their parameters and values. ");
+linkFormat("inc/deviceNickNames.txt","[TXT/DB] Text file serving as database storage for the values displayed in the SETUP form fields. ");
+linkFormat("inc/accessLog.txt","[TXT/DB] Text file record of all access to web interface.");
+linkFormat("inc/useful.cli.commands.dev.txt","[CLI UTILS] Useful commands. ");
+?>
+</ul>
+
+
+
+
+

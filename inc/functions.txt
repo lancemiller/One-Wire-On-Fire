@@ -1,0 +1,87 @@
+<?php
+// putenv("TZ=America/Los_Angeles");
+// never include this in php files that show passwords
+function showSource() { if (isset($_GET['source'])) { highlight_file($_SERVER["SCRIPT_FILENAME"]); phpinfo(); } }
+function hilite($me) { print "\n<h3>${me}</h3>\n"; highlight_file(${me});}
+$page=getenv("SCRIPT_NAME"); 
+$query=getenv("QUERY_STRING");
+$referer=getenv("HTTP_REFERER"); 
+$ip=getenv("REMOTE_ADDR");
+$docRoot=getenv('DOCUMENT_ROOT');
+$noprint="&#160;";
+$toggleColors=array('#6D7B8D','#736F6E');
+
+function p($input,$class="") {print "\n<p class=\"".$class."\">\n".$input."\n</p>\n";}
+
+function test($input="<b>testing</b>") {
+if(is_array($input)) { foreach ($input as $item) { p($item,"test"); } } 
+else { p($input,"test");  } }
+
+function recurse_copy($src,$dst) { 
+    $dir = opendir($src); 
+    @mkdir($dst); 
+    while(false !== ( $file = readdir($dir)) ) { 
+        if (( $file != '.' ) && ( $file != '..' )) { 
+            if ( is_dir($src . '/' . $file) ) { 
+                recurse_copy($src . '/' . $file,$dst . '/' . $file); 
+            } 
+            else { 
+                copy($src . '/' . $file,$dst . '/' . $file); 
+            } 
+        } 
+    } 
+    closedir($dir); 
+} 
+
+
+function td($input) {print "\n<td>\n".$input."\n</td>\n";}
+
+function tr($input) {print "\n<tr>\n"; foreach($input as $td) { td($td); } print "\n</tr>\n";}
+
+function inputText($name,$value,$class) {
+isset($value) ? print "" : $value="";
+print "\n<input type=\"text\" class=\"".$class."\" name=\"".$name."\" value=\"".$value."\"></input>\n";
+}
+
+function submit($class) {print "\n<input type=\"submit\" class=\"".$class."\" value=\"submit\"></input>\n";}
+
+function option($value,$printed, $selected) {
+if($selected=="") { print "\n<option value=\"".$value."\" >".$printed."</option>\n"; }
+else { print "\n<option value=\"".$value."\" selected=\"".$selected."\">".$printed."</option>\n"; }
+																						}
+
+function select( $combo,
+		 $nameA, $nameB,
+		 $optArray, $valueB,
+                 $labelTop, $labelBottom,
+		 $classA, $classB, 
+                 $onEvent, $jsFunct, $jsArgv) {
+	print "\n<select id=\"".$nameA."\" name=\"".$nameA."\" class=\"".$classA."\" ".$onEvent."=\"".$jsFunct."('".$jsArgv."');\" >\n";
+	if(is_array($optArray)) {
+		option("-",$labelTop,"selected");
+		foreach($optArray as $opt) { option($opt,$opt,""); }
+		if($combo=="y") { option("*",$labelBottom,""); } } 
+	else { if($combo=="y") { option("*",$labelBottom,""); } }
+	print "\n</select>\n";
+	if($combo=="y") { print inputText($nameB,$valueB,$classB); }
+	}
+
+function select2($name, $optArray, $selected,$onEvent="onchange",$jsFunct="doNothing",$jsArgv="this") {
+	print "\n<select id=\"".$name."\" name=\"".$name."\"  ".$onEvent."=\"".$jsFunct."('".$jsArgv."');\" >\n";
+	foreach($optArray as $opt) { $selected==$opt ? option($opt,$opt,"selected") : option($opt,$opt,""); }
+	print "\n</select>\n";
+}
+
+function select3($name, $optArray, $selected) {
+	print "\n<select id=\"".$name."\" name=\"".$name."\" >\n";
+	foreach($optArray as $opt) { $selected==$opt ? option($opt,$opt,"selected") : option($opt,$opt,""); }
+	print "\n</select>\n";
+}
+
+function ajaxInlineEdit($id, $ajaxUrl) {
+print "\n<script type=\"text/javascript\">\n";
+print " new Ajax.InPlaceEditor('".$id."', '".$ajaxUrl."')\n";
+print "\n\t</script>\n\n";
+}
+
+?>

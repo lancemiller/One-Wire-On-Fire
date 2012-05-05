@@ -1,0 +1,485 @@
+#!/usr/bin/env python
+import os
+#================================================
+# One-Wire-On-Fire by Lance Miller this.is.lance.miller@gmail.com December 2011 
+# licensed under a Creative Commons Attribution 3.0 Unported License.
+# http://www.opensource-automation.com/
+#================================================
+# EDIT THIS VARIABLE CALLED wwwRootUserEdited 
+# TO MATCH YOUR WEB ROOT DIRECTORY. 
+wwwRootUserEdited = os.path.join("/","var","www")  
+# PLEASE CREATE DIRECTORIES One-Wire-On-Fire/inc 
+# IN YOUR WEB ROOT DIRECTORY
+global remoteURL
+remoteUrl = "localhost"
+#================================================
+
+
+import time
+import threading
+import string
+import sys
+import math
+import shutil
+import urllib2
+import datetime
+
+global message
+global defaultMessage
+defaultMessage="\t[status messages here]"
+message=defaultMessage
+
+global startTime
+startTime = time.time()
+
+global elapsedTime
+elapsedTime=0
+
+global home
+home=os.getenv("HOME")
+
+global oneWirePath
+oneWirePath=os.path.join("/","mnt","1wire")
+
+global errorLogTxt
+errorLogTxt ="errorLog.txt"
+
+global currentStateTxt
+currentStateTxt = "currentState.txt"
+
+global devicesTxt
+devicesTxt = "devices.txt"
+
+global deviceNickNamesTxt
+deviceNickNamesTxt = "deviceNickNames.txt"
+
+global deviceShortListTxt
+deviceShortListTxt = "deviceShortList.txt"
+
+global emulateCommandTxt
+emulateCommandTxt = "emulateCommand.txt"
+
+global wwwRoot
+global myOutputDir
+global myRemoteDir
+global myOutputDirA
+global myOutputDirB
+myOutputDirA="One-Wire-On-Fire"
+myOutputDirB="inc"
+wwwRoot = wwwRootUserEdited
+myOutputDir = os.path.join(wwwRoot,myOutputDirA,myOutputDirB)	
+myRemoteDir = "http://"+remoteUrl+"/"+myOutputDirA+"/"+myOutputDirB+"/"
+global emulateCommandUrl
+emulateCommandUrl= myRemoteDir+emulateCommandTxt
+global devicesUrl
+devicesUrl= myRemoteDir+devicesTxt
+global deviceNickNamesUrl
+deviceNickNamesUrl= myRemoteDir+deviceNickNamesTxt
+
+def properExit():
+	os.system('kill %d' % os.getpid())
+
+
+def returnUrltext(url):
+	try:
+		f = urllib2.urlopen(url)
+		output = f.read()
+	        f.close()
+	        unset(f)	
+		return output	
+	except:
+		print "\nurl: "+url+" "+"is unreachable\n"
+
+def getEmulateCommand():
+	global emulateCommandUrl
+        return returnUrltext(emulateCommandUrl)
+
+def getDevicesUrl():
+	global devicesUrl
+        return returnUrltext(devicesUrl)
+
+def getDeviceNickNamesUrl():
+	global deviceNickNamesUrl
+        return returnUrltext(deviceNickNamesUrl)
+
+
+def about(input):
+        print "\n\n"
+	f=open(sys.argv[0])
+	for i in range(input):
+    		line=f.next().strip()
+    		if i > 1: print "\t" + line
+	f.close()
+	raw_input("press enter to continue")
+
+if os.path.exists(myOutputDir):
+	errorLogTxt = os.path.join(myOutputDir,errorLogTxt)
+	currentStateTxt = os.path.join(myOutputDir,currentStateTxt)
+	devicesTxt = os.path.join(myOutputDir,devicesTxt)
+	deviceNickNamesTxt = os.path.join(myOutputDir,deviceNickNamesTxt)
+
+else: 
+	about(15)
+	print "\n\t" + myOutputDir + " does not exist, please create directory so " + sys.argv[0] + " has a dir to write files. \n\t\tSincerely, Skynet\n" 
+	properExit()	
+
+global deviceListAbs
+
+def elapsedTimeGlobal():
+	global startTime
+	global elapsedTime
+	elapsedTime = time.time() - startTime
+
+
+def elapsedTimeMicro(start, now):
+	try:
+		elapsed = start - now
+		return elapsed
+	except: pass
+
+def mem(size="rss"):
+    """Generalization; memory sizes: rss, rsz, vsz."""
+    return int(os.popen('ps -p %d -o %s | tail -1' %
+                        (os.getpid(), size)).read())
+ 
+def rss():
+    """Return ps -o rss (resident) memory in kB."""
+    return mem("rss")
+ 
+def rsz():
+    """Return ps -o rsz (resident + text) memory in kB."""
+    return mem("rsz")
+ 
+def vsz():
+    """Return ps -o vsz (virtual) memory in kB."""
+    return mem("vsz")    
+
+def boxes(L):
+    for k in L:
+	print "\t+---->"+k   
+    print "+-------------------------------------------------------+"
+	
+def printMem():
+    elapsedTimeGlobal()
+    L=[]
+    L.append("memory (resident) usage : " + str(rss()) + " kB") 
+    L.append("memory (resident + text) usage : " + str(rsz()) + " kB")
+    L.append("memory (virtual) usage : " + str(vsz()) + " kB")
+    L.append("master run time: "+str(elapsedTime))
+    L.append(message)
+    boxes(L)
+
+def clear():
+	os.system("clear")
+
+def menuBanner():
+	print " One-Wire-On-Fire: Status"
+	printMem()
+	
+def printkeyvalues(dict):
+	clear()
+	menuBanner()
+    	print " One-Wire-On-Fire: Menu"
+	stmt= "only type number to make selection"
+	print "%7s" % stmt
+	keys = dict.keys()
+	keys.sort()
+	for k in keys:
+     		# print k, dict[k]
+     		print "%5i" % k, 
+		print "%5s" % dict[k]
+        print "+-------------------------------------------------------+"
+	return
+
+
+
+def try2float(x):
+	try:
+		x=float(x)
+	except: 
+		TypeError
+        	raw_input("data entry was wrong datatype")		
+	return x
+
+def try2int(x):
+	try:
+		x=int(x)
+	except: 
+		TypeError
+        	raw_input("data entry was wrong datatype")		
+        return x
+
+def try2list(x):
+	try:
+		x=[(x)]
+	except: 
+		TypeError
+        	raw_input("data entry was wrong datatype")		
+        return x
+def try2floatlist(list):
+	outputlist=map(try2float, list)
+	return outputlist
+
+def try2intlist(list):
+	outputlist=map(try2int, list)
+	return outputlist
+
+
+def printAndStop(input):
+	print input
+	raw_input("press enter to continue")		
+
+def printAndExit(input):
+	print input
+        properExit()	
+        
+def makeDir(input):
+	if os.path.exists(input):
+		return True
+	try:
+		os.mkdir(input)
+	except:
+		return False
+
+def fileContents(input):
+	try:
+		f=open(input,"r")
+		readme=f.readline()
+		f.close()
+		return str(readme.strip())
+	except:	
+		return None
+
+def fileContentsAll(input):
+        try:
+              f = open(input,'r')
+ 	      for enum,line in enumerate(f.readlines()):
+		clear()
+     	      	print "line number "+enum+" in "+input+":"
+     	      	print "\t"+line
+ 	      f.close()
+        except:
+                return None
+
+
+
+def fileWrite(input,myfile,mode='a'):
+	try:
+		fh=open(myfile,mode)
+		fh.write(input+"\n") 
+		fh.close()
+	except:
+		print "could not write \""+input+"\" to "+myfile
+
+def dirList(input):
+     if os.path.isdir(input) == True:
+	dList=os.listdir(input)
+	return dList
+     else:
+	return []
+	
+	
+def deviceList(input):	
+	outList= []
+        dList=dirList(input)
+	for a in dList:
+		for b in a.split("."):
+	        	if (len(b) == 2) and (b.isdigit()):
+ 				outList.append(a)
+	return outList
+
+
+global deviceListAbs
+deviceListAbs=[]
+global parameterList
+parameterList=[]
+global deviceTypes
+deviceTypes=[]
+global deviceAddress
+deviceAddress=[]
+global deviceAddressAlias
+deviceAddressAlias=[]
+global deviceParametersValues
+deviceParametersValues=[]
+global myDeviceList
+myDeviceList=[]
+
+
+def probe():
+	global myOutputDir
+	global oneWirePath
+	global deviceListAbs
+	deviceListAbs=[]
+	global parameterList
+	parameterList=[]
+	global deviceTypes
+	deviceTypes=[]
+	global deviceAddress
+	deviceAddress=[]
+	global deviceAddressAlias
+	deviceAddressAlias=[]
+	global deviceParametersValues
+	deviceParametersValues=[]
+	global myDeviceList
+	myDeviceList=[]
+	deviceListAbs=[]
+	parameterList=[]
+	deviceTypes=[]
+	deviceAddress=[]
+	deviceAddressAlias=[]
+	deviceParametersValues=[]
+	global message
+	global defaultMessage
+	myDeviceList=deviceList(oneWirePath)
+	for device in myDeviceList:
+        	deviceListAbs.append(os.path.join(oneWirePath,device))
+		
+	for device in deviceListAbs:
+        	parameters=dirList(device)
+        	for parameter in parameters:
+                	parameterList.append(os.path.join(device,parameter))
+                	if parameter == "type":
+                        	content=fileContents(os.path.join(device,parameter))
+                       		deviceTypes.append(os.path.join(device,parameter,content))
+                	content=fileContents(os.path.join(device,parameter))
+                	content=str(content)
+                	if parameter == "address":
+                                content=fileContents(os.path.join(device,parameter))
+                                deviceAddress.append(content)
+                        content=fileContents(os.path.join(device,parameter))
+                        content=str(content)
+			try:
+                        	deviceParametersValues.append(os.path.join(device,parameter,content))
+               			# print ""+os.path.join(device,parameter,content)
+		 	except:
+                        	pass 
+        currentStateContents = readWholeReturn(currentStateTxt)
+        deviceNickNamesContents = readWholeReturn(deviceNickNamesTxt)
+        deviceShortListContents = readWholeReturn(deviceShortListTxt)
+ 	f = open(devicesTxt, 'w') 
+	f.write("%s\n" % datetime.datetime.now())
+	for item in deviceParametersValues:
+  		f.write("%s\n" % item)
+        f.close()
+
+        try: 
+		deviceNickNamesContent = readWholeReturn(deviceNickNamesTxt)	
+	
+	except:
+ 		f = open(deviceNickNamesTxt, 'w') 
+		for item in myDeviceList:
+  		        item = item+"|no nickname|choose parameter|"+str(datetime.datetime.now())	
+  			f.write("%s\n" % item)
+  		        deviceNickNamesContent.append(item)	
+       		f.close()
+         
+                
+def readWholeReturn(input):
+	array = []
+	try:
+		text_file = open(input, "r")
+		whole_thing = text_file.open(filename, 'r')
+		for line in whole_thing:
+   			 array.append( line )	
+		text_file.close()
+		return array
+	except:
+		return False
+
+
+
+class Timer(threading.Thread):
+ 	def __init__(self, seconds):
+ 		self.runTime = seconds
+ 		threading.Thread.__init__(self)
+ 	def run(self):
+ 		time.sleep(self.runTime)
+ 		print "Buzzzz!! Time's up!"
+
+class CountDownTimer(Timer):
+ 	def run(self):
+ 		counter = self.runTime
+ 		for sec in range(self.runTime):
+ 			time.sleep(1.0)
+ 			counter -= 1
+
+
+class CountDownExec(CountDownTimer):	
+ 	def __init__(self, seconds, action):
+ 		self.action = action	
+ 		CountDownTimer.__init__(self, seconds)
+ 	def run(self):				
+ 		CountDownTimer.run(self)
+ 		self.action()	
+ 		
+def myAction():					
+ 	print "Performing my action..."	
+
+def probeWrapper():
+	while True:
+		probe()
+        	time.sleep(60.0)
+
+def pollWebInterface():
+	global message
+	while True:
+	        myCommand = getEmulateCommand()	
+                print myCommand	
+		time.sleep(60.0)
+
+
+
+def copyMyself():
+	global myOutputDir
+	myFile="_ONE-WIRE-ON-FIRE_py.txt"
+	destinationFile=os.path.join(myOutputDir,myFile)
+	shutil.copy(sys.argv[0], destinationFile) 
+	if os.path.isfile(destinationFile):
+        	print "You've made a copy of the program you are running" 
+  		printAndStop(destinationFile) 
+
+
+def emulateRun():
+	time.sleep(10.0)
+ 
+
+def mainMenu(input):
+
+	menu_selection = 1
+	menu = dict([( 1, "about"),
+                     ( 2, "run 1wire controlled by Web UI"),
+                     ( 3, "run 1wire emulation controlled by Web UI (good for dev purposes)"),
+                     ( 4, "copy this program to "+myOutputDir),
+                     ( 0, "exit")])
+        while menu_selection != 0:
+        	printkeyvalues(menu)
+        	menu_selection = try2int(raw_input("enter menu selection here: "))
+		if menu_selection == 0:
+			properExit()	
+		if menu_selection == 1:
+			about(7)
+		if menu_selection == 2:
+       			c = CountDownExec(2, probeWrapper)
+       			c.start()
+			webUIRun()
+		if menu_selection == 3:
+			emulateRun()
+		if menu_selection == 4:
+			copyMyself()
+	clear()
+	print "bye, you are back in "
+	os.system("echo $SHELL")
+	properExit()
+
+
+def webUIRun():
+        menuBanner()	
+	menu_selection=0
+
+
+
+def main():
+	mainMenu("")
+
+main()
+

@@ -1,0 +1,4 @@
+[27-Apr-2012 05:42:13] PHP Warning:  copy(/home/cyr/public_html/linuXautomation/inc/emulateFiles/*) [<a href='function.copy'>function.copy</a>]: failed to open stream: No such file or directory in /home/cyr/public_html/linuXautomation/index.php on line 22
+[27-Apr-2012 05:51:27] PHP Fatal error:  Call to undefined function recursive_copy() in /home/cyr/public_html/linuXautomation/index.php on line 22
+[27-Apr-2012 05:52:02] PHP Fatal error:  Call to undefined function recurse_copy() in /home/cyr/public_html/linuXautomation/index.php on line 22
+[27-Apr-2012 05:52:39] PHP Fatal error:  Call to undefined function recurse_copy() in /home/cyr/public_html/linuXautomation/index.php on line 22
