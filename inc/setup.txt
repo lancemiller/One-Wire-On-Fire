@@ -1,0 +1,128 @@
+
+<?php
+$writeOver="yes";
+$devicesA=array();
+$devicesB=array();
+$devicesC=array();
+$formerName="";
+$formerValue="";
+$formerLine="";
+if (file_exists($devicesTxt)) {
+	$lines=explode("\n", file_get_contents($devicesTxt));
+	foreach($lines as $line) { $items=explode("/", $line); if(isset($items[3])){ $devicesA[]=$items[3]; } }
+	$devicesA=array_unique($devicesA);
+	unset($lines,$line,$items,$item);
+  if (file_exists($deviceNickNamesTxt)) {  
+		$lines=explode("\n", file_get_contents($deviceNickNamesTxt));
+    if(is_array($lines)) { foreach($lines as $line) { $items=explode("|",$line); if(isset($items[1])) { $devicesB[$items[0]]= $items[1]; } } 
+		unset($lines,$line,$items,$item);   } }
+    
+  if(count($devicesB) > 1) {$writeOver="no";} 
+	if($writeOver=="yes") { unset($devicesB);$devicesB=array();
+		$fh=fopen($deviceNickNamesTxt, 'w');
+	  foreach($devicesA as $device) {	fwrite($fh, $device."|no nickname|choose parameter\n"); }
+		fclose($fh); unset($fh,$device,$devicesA); 
+		$lines=explode("\n", file_get_contents($deviceNickNamesTxt));
+    if(is_array($lines)) { foreach($lines as $line) { $items=explode("|",$line); if(isset($items[1])) { $devicesB[$items[0]]= $items[1]; } } 
+		unset($lines,$line,$items,$item);   }} 
+
+	$lines=explode("\n", file_get_contents($deviceNickNamesTxt));
+  unset($devicesB);$devicesB=array();
+	foreach($lines as $line) { $items=explode("|",$line); 
+														if(isset($items[1])) {  $devicesB[$items[0]]= $items[1]; } 
+														if(isset($items[2])) { $devicesC[$items[0]]= $items[2]; } 
+	unset($lines,$line,$items,$item);   
+
+
+  $update="no";
+  $linesUpdate=array();	
+	foreach($_POST as $name => $value) {
+		$nameArr=explode('_', $name);
+		if(in_array("NAME",$nameArr)) { $name=$nameArr[0].".".$nameArr[1]; 
+	                                    foreach($devicesB as $deviceName => $deviceValue) {
+																				if(trim($name)==trim($deviceName) && $deviceValue!=$value && $value!="") { $update="yes"; } 
+															  				$linesUpdateLine=$name."|".$value."|";  }
+																		}	
+		if(in_array("PARAM",$nameArr)) { $name=$nameArr[0].".".$nameArr[1]; 
+	                                    foreach($devicesC as $deviceName => $deviceValue) {
+																				if(trim($name)==trim($deviceName) && $deviceValue!=$value && $value!="") { $update="yes"; } 
+															  			  $linesUpdate[]=$linesUpdateLine.$value.PHP_EOL; 
+																																												}
+																		}	
+																			
+																																}
+																			
+																			} 	
+
+  $linesUpdate=array_unique($linesUpdate);
+
+  if($update=="yes" && $linesUpdate > 0) { 
+ 		 file_put_contents($deviceNickNamesTxt,$linesUpdate);
+		 $lines=explode("\n", file_get_contents($deviceNickNamesTxt));
+  	 if(is_array($lines)) {	unset($devicesB); $devicesB=array(); 
+													foreach($lines as $line) { $items=explode("|",$line); if(isset($items[1])) { $devicesB[$items[0]]= $items[1]; } }  
+													unset($lines,$line,$items,$item); }   
+												 } 
+	print "\n<form name=\"setupForm\" action=\"?majorMode=setup\" method=\"POST\">\n";
+	print "\n<table>\n<tr><th>Device Hardcoded Name</th><th>Type</th><th>Human Friendly Name</th><th>Select a Parameter</th><th></th></tr>\n";
+	$lines=explode("\n", file_get_contents($devicesTxt));
+  $td="\n<td valign=\"middle\" align=\"center\">\n";	
+	foreach($devicesB as $name => $value) {
+	print "\n<tr>";
+	print $td.$name."</td>";
+	print $td;
+	foreach($lines as $line) { $items=explode("/", $line); 
+															if(isset($items[4]) && $items[3]==$name && $items[4]=="type")
+																	{ 
+																  $url="http://www.owfs.org/uploads/".$items[5].".html";	
+																  $id="#owfsIFRAME";	
+																	print "\n<a onmouseover=\"$('".$id."').fadeOut();$('".$id."').attr('src','".$url."');$('".$id."').fadeIn();\" target=\"_blank\" href=\"".$url."\" >".$items[5]."</a>\n"; } }
+	print "\n</td>\n";
+	print $td;
+	inputText($name."_NAME", $value, "");
+  print "\n</td>\n";	
+	print $td;
+	reset($lines);
+	foreach($lines as $line) { $items=explode("/", $line); if(isset($items[4]) && $items[3]==$name){ $selectList[]=$items[4]; } }
+	$selectList=array_unique($selectList);
+  $selected = "";
+	foreach($devicesC as $cname => $cvalue) { 
+	  if($name==$cname) { $selected=$cvalue ; }
+	}	
+	select2($name."_PARAM", $selectList, $selected);
+	unset($selectList);
+  print "\n</td>\n";	
+	print $td;
+	submit("");
+	print "</td>\n</tr>\n";
+				}
+?>
+<tr><td>
+<p style="font-size:75%">
+The unique hardcoded name (a hexadecimal number) manufactured into the device.
+</p>
+</td><td>
+<p style="font-size:75%">
+</p>
+</td><td>
+<p style="font-size:75%">
+Nickname or alias you will give the device. This Linux Automation web app will use the nickname for reference.
+</p>
+</td><td>
+<p style="font-size:75%">
+Choose the device parameter you want to monitor during automation. Example parameters people choose are <i>temperature</i>, <i>PIO.ALL</i> and <i>PIO.7</i>.
+</p>
+</td><td>
+
+</td></tr><tr><td colspan="5">
+<iframe src="http://www.owfs.org/uploads/DS2408.html" id="owfsIFRAME" width="100%" height="500"></iframe>
+<div id="owfsDiv"></div>
+<?php
+print "\n</table>\n<input type=\"hidden\" name=\"majorMode\" value=\"setup\" />\n</form>\n";
+
+
+																} else { $error=$devicesTxt." does not exist" ; p($error); }
+
+
+
+

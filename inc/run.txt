@@ -1,0 +1,75 @@
+
+<div id="trueStatusFromPythonScript" class="seriousGreen">
+<p class="tiny">
+<span id="programTrueState">
+<u>&nbsp; &nbsp; &nbsp;</u>
+</span>
+is 
+<span id="stateTrueState">
+<u>&nbsp; &nbsp; &nbsp;</u>
+</span>
+runtime remainder of 
+<span id="offtimeTrueState">
+<u>&nbsp; &nbsp; &nbsp;</u>
+</span>
+and was turned on or off by someone at computer host 
+<span id="ipTrueState">
+<u>&nbsp; &nbsp; &nbsp;</u>
+</span>.
+</p>
+</div>
+<div id="trueStatusFromPythonScriptAlert" class="seriousRed">
+<p class="tiny">
+If you see this something is wrong with internet communication, and this web interface cannot give a current status report of 
+what is happening on the automation controlling machine.
+</p>
+</div>
+<div class="runMenu">
+<span id="currentStateProgram" class="mainMenu"><?php print $program;?></span>
+<a id="start" class="mainMenu"> 
+ START <br /></a>
+ <a id="abort" class="mainMenu"> 
+	ABORT</a>
+<span id="runThisProgramDiv" style="display:none">
+select another program:
+<?php
+select3("runThisProgram", $programNames, $program);
+?>
+</span>
+</div>
+<br />
+<?php
+if (file_exists($devicesTxt)) {
+  print "\n<table>\n";	
+	$lines=explode("\n", file_get_contents($devicesTxt));
+  foreach($devicesB as $name => $value) { 
+	foreach($lines as $line) { $items=explode("/", $line); 
+	 if(isset($items[5])) {	
+		foreach($devicesC as $cname => $cvalue) { if($name==$cname && $items[4]==$cvalue && $items[3]==$name) { 
+      print "\n<tr>\n";
+      td($value); 
+      td($items[4]); 
+		  $valueExploded=explode(".",$value);	
+		  if(count($valueExploded)>0){ $newValue=""; foreach($valueExploded as $xploded) {$newValue=$newValue.$xploded;} $value=$newValue;} 	
+		  $valueExploded=explode(".",$items[4]);	
+		  if(count($valueExploded)>0){ $newValue=""; foreach($valueExploded as $xploded) {$newValue=$newValue.$xploded;} $items[4]=$newValue;} 	
+			print "\n<td class=\"watchedParams\"><span id=\"".$value.$items[4]."\"></span></td>\n";
+			print "\n</tr>\n";
+
+			}} 
+																			
+  unset($items, $item, $line);reset($lines);	}
+																			}
+																			}
+	unset($line,$items,$item);
+print "\n</table>\n";
+}
+
+isset($_GET['test']) ? print "\n<div style=\"display:block\">\n" : print "\n<div style=\"display:none\">\n"; 
+?>
+<textarea id="deviceShortList" name="deviceShortList" cols="80" rows="5" class="seriousStatus">
+</textarea>
+</div>
+</div>
+
+

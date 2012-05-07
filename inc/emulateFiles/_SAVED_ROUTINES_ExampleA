@@ -1,0 +1,1 @@
+while currentTime < runTime : if OutdoorA temp is less than 30: set FridgeB to OFF

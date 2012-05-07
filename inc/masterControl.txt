@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>one-wire-on-fire.org : One-Wire-On-Fire 1-Wire Automation Management Tool</title>
+<meta name="license" content="This entire software suite and document set is licensed under the GNU GENERAL PUBLIC LICENSE Version 3" />
+<meta name="description" content="One-Wire-On-Fire is a free software suite providing web based programming and control of 1-Wire devices. The software is licensed for free sharing with attribution to project founder Lance Miller. 
+GNU GENERAL PUBLIC LICENSE Version 3" />
+<meta name="keywords" content="owfs, 1-Wire, PHP, Python, Linux, Unix, automation" />
+<meta name="robots" content="index, follow" />
+<link rel="icon" href="inc/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="inc/favicon.ico" type="image/x-icon" /> 
+<link type="text/css" href="inc/One-Wire-On-Fire.css"
+ rel="Stylesheet" />	
+
+<link type="text/css" href="inc/jquery/css/vader/jquery-ui-1.8.17.custom.css"
+ rel="Stylesheet" />	
+<script type="text/javascript" src="inc/jquery/js/jquery-1.7.1.min.js">
+	</script>
+<script type="text/javascript" src="inc/jquery/js/jquery-ui-1.8.17.custom.min.js">
+	</script>
+
+
+<script type="text/javascript" src="inc/jquery.editinplace.js">
+	</script>
+
+
+<script type="text/javascript" src="inc/jquery.dotimeout.min.js">
+	</script>
+
+<script type="text/javascript" src="inc/One-Wire-On-Fire.js">
+	</script>
+
+</head>
+
+<body id="body">
+<button id="emulate">
+<span id="emulateOn" style="display:block">emulate is off</span>
+<span id="emulateOff" style="display:none">emulate is on</span>
+</button>
+<div id="ajaxConsole" style="display:none">
+<span class="tiny">[ i am draggable ]</span>
+<br />
+<br />
+
+<div id="ajaxConsoleHeader" >ajax communication console</div>
+<br />
+<br />
+
+<span class="seriousGreen">url:</span> 
+<span class="seriousGreen" 
+id="ajaxURL"></span><br />
+<br />
+
+<span class="seriousGreen">status:</span> 
+<span class="seriousGreen" 
+id="ajaxStatus"></span><br />
+<br />
+<br />
+<div class="seriousGreen">
+entire text sent back from server:
+<br />
+<textarea class="tiny" rows="5" cols="80" id="ajaxResult">
+</textarea>
+</div>
+<br />
+<br />
+<img id="spinnerConsole" src="inc/ajax-loaderGREENBLACK.gif" />
+<img id="error" src="inc/error.png" />
+</div>
+<table id="debugtable" style="display:none">
+<tr>
+<td class="tiny" id="debugbox">debug output</td> 
+<td class="tiny">&gt;&gt;</td>
+<td>
+<textarea id="debug" cols="80" rows="1" wrap="soft" class="tiny">
+Welcome to the debug output textarea!
+Vital info for the debug textarea :
+1) the ID for this output field is: debug
+2) is loaded into every page
+3) defaults to style.display=none
+4) area is shown by setting style.display=block
+5) area is shown by javascript command debug() 
+6) area is shown by debug=y query string at end of any URL
+</textarea>
+</td>
+</tr>
+</table>
+<?php
+showSource();
+isset($_GET['majorMode']) ? $majorMode=$_GET['majorMode'] : $majorMode="nothing";
+isset($_POST['majorMode']) ? $majorMode=$_POST['majorMode'] : $majorMode=$majorMode;
+?>
+
+<table><tr>
+<td id="banner" valign="top" width="10px">
+<div id="bannerWords">
+<?php
+$img="<img id=\"animatedCircuit\" src=\"inc/animated_circuit.gif\" />";
+$img2="<img id=\"spinner\" src=\"inc/ajax-loaderGREENBLACK.gif\" />";
+$letters=array($img,"","O&#160W", "N&#160I", "E&#160R", "&#160;&#160;E", "&#160;", "O&#160;F","N&#160;I","&#160;&#160;R","&#160;&#160;E",$img2);
+foreach($letters as $letter) { print "<span class=\"bannerLetters\" style=\"display:inline\">".$letter."</span><br />"; }
+unset($img,$letters,$letter);
+?>
+</div>
+</td><td align="left" valign="top">
+<table><tr>
+<td align="left" valign="top">
+<div class="bannerMenu">
+<a href="javascript:void(0)" class="mainMenu" 
+ onclick="$('#program').fadeOut();$('#run').fadeOut();$('#about').fadeOut();$('#setup').fadeIn();">
+Setup</a>
+<a href="javascript:void(0)" class="mainMenu" 
+ onclick="$('#setup').fadeOut();$('#run').fadeOut();$('#about').fadeOut();$('#program').fadeIn();">
+Program</a>
+<a href="javascript:void(0)" class="mainMenu" 
+ onclick="$('#setup').fadeOut();$('#program').fadeOut();$('#about').fadeOut();$('#run').fadeIn();">
+Run</a>
+<a href="javascript:void(0)" class="mainMenu" 
+ onclick="$('#setup').fadeOut();$('#program').fadeOut();$('#run').fadeOut();$('#about').fadeIn();">
+About</a>
+<span id="status"></span>
+<button onclick="displayOn('ajaxConsole');displayOn('showAjaxStatus');displayOn('hideAjaxStatus')">
+<span id="showAjaxStatus" style="display:block">show ajax console</span>
+<span id="hideAjaxStatus" style="display:none">hide ajax console</span>
+</button>
+<button onclick="displayOn('debugtable');displayOn('showDebug');displayOn('hideDebug')">
+<span id="showDebug" style="display:block">show debug console</span>
+<span id="hideDebug" style="display:none">hide debug console</span>
+</button>
+</div>
+</td></tr>
+<tr>
+<td align="left" valign="top">
+<?php
+$inputArray=array('setup','program','run','about');
+foreach($inputArray as $item) {
+		print "\n<div id=\"".$item."\" class=\"mainContent\"\t"; 
+		$majorMode==$item ? $out="\tstyle=\"display:block;float:left\">\n": $out="\tstyle=\"display:none;float:left\">\n";
+		print $out;
+		include($includesDir."/".$item.".txt");
+		print "\n</div>\n";    }
+
+unset($inputArray,$item);
+?>
+
+</td></tr></table>
+<center><h1>One-Wire-On-Fire: ALPHA VERSION 0.1.0.a
+<img src="inc/gplv3-88x31.png" />
+</h1></center>
+<div class="tiny">
+<center>
+<a href="https://github.com/lancemiller/One-Wire-On-Fire">
+<img src="inc/github.png" 
+width="24" height="24" />
+Source code collaboration: 
+https://github.com/lancemiller/One-Wire-On-Fire
+</a>
+</center>
+<p>
+Copyright (C) 2011 : Lance Miller this.is.lance.miller@gmail.com 
+</p><p>
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+</p><p>
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details. 
+<br />
+<a href="inc/gpl-3.0.txt" target="_blank">[click to see complete copy of license document]</a>
+</p><p>
+<i>One-Wire-On-Fire</i> is a web and command line based user interface to 1Wire devices. Written in PHP/Python/HTML/Javacript for use on any device 
+that runs a Unix/Linux variant with Python and serves PHP web pages. See ABOUT page for license restrictions (free use and sharing with attribution to author) and all source code is viewable in your browser. 
+</p><p>
+<i>One-Wire-On-Fire</i> accesses an ACII interface to 1Wire devices. This means <i>One-Wire-On-Fire</i> accesses a plain old directory file structure with a typical line looking like this: 
+<b>/mnt/1wire/22.20F21A000000/temperature/38.075</b>, reading these device/parameter values, and in some cases setting an ON/OFF circuit by writing an 0 or 1 are all that this software does to events out there on system bus. The power and function of <i>One-Wire-On-Fire</i> comes in being able to 
+name the devices a human-friendly name, write simple programs<sup>[1]</sup>
+and run/stop those same stored programs, all within a web browser.
+</p>
+<center><sup>[1]</sup>example: <b>while currentTime &lt; runTime : if OutdoorA temp is less than 30: set FridgeB to OFF</b></center>
+<p>
+Note on origin of One-Wire-On-Fire: The proprietors of WiseAss Brewing Company (serving microbrews to 
+the Puget Sound region of Washington State) Ryan Hodges and Kurt Forsberg conceived of the need for automation of
+their brewing process and wanted Linux coupled with 1wire devices. Kurt Fosberg custom made the devices 
+and coded control in the Bash programming language. After several years experimenting with 1wire, Linux based control,
+and posting to their site linuxautomation.org, they asked Lance Miller to be the coder in late 2011 with a view to
+present at LinuxFest Northwest 2012. 
+</p>
+
+
+<h3>1Wire Briefly Explained</h3>
+<ul>
+<li><strong>Monitoring</strong>
+<p>
+1-wire is great for low-cost monitoring of environmental conditions (temperature, light levels, humidity, moisture,...).&nbsp; There are 3rd party devices that can measure more elaborate conditions (Thermocouples for extreme temperatures, ultraviolet, wind-speed, counters. Typical uses include computer case and server room monitoring, weather stations, soil conditions, aquarium and vehicle monitoring. 
+</p></li>
+<li><strong>Control</strong>
+<p>
+There are numerous 1-wire chips that have on-off switches (either 1,2,or 8 switches per chip). High current circuits can be built using relays.
+There is also 3rd party devices that have pulse-width modulation (PWM) counters and other controls, also under 1-wire supervision.
+</p> </li>
+<li><strong>Instrumentation</strong><p>
+The battery monitoring chips have (besides temperature) current and voltage sensors in different ranges. 
+ </p></li>
+<li><strong>Limitations</strong>
+<p>
+In fact, the biggest constraint is usually speed.&nbsp; Fast process control and momentary contacts are difficult. Instead, 1-wire might be a good supervisory/monitoring/alarm system on top of process control.&nbsp;
+</p></li>
+</ul> <br />
+</div>
+<hr />
+<a href="http://en.wikipedia.org/wiki/1-Wire">Click to 1Wire Wikipedia Entry</a><br/ >
+<iframe src="http://en.wikipedia.org/wiki/1-Wire" width="100%" height="2000"></iframe>
+</td></tr></table>
+
+</body>
+</html>
+
+
+

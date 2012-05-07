@@ -1,0 +1,4 @@
+10.AF2551010800|outdoor_temp|temperature|40.775
+22.20F21A000000|fridge|temperature|38.075
+22.650E1B000000|ferm_temp|temperature|35.375
+29.A29F09000000|heater|PIO.1|0

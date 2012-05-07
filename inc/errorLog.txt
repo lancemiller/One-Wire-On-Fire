@@ -1,0 +1,124 @@
+[06-Apr-2012 07:06:38] PHP Parse error:  syntax error, unexpected ';' in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 104
+[06-Apr-2012 07:06:48] PHP Parse error:  syntax error, unexpected ';' in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 104
+[06-Apr-2012 07:07:41] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 108
+[06-Apr-2012 07:08:19] PHP Parse error:  syntax error, unexpected ',' in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 108
+[06-Apr-2012 07:10:08] PHP Parse error:  syntax error, unexpected ',' in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 108
+[06-Apr-2012 07:10:51] PHP Parse error:  syntax error, unexpected '[' in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 108
+[06-Apr-2012 07:11:37] PHP Warning:  include(/home/cyr/public_html/linuXautomation/inc/nothing.txt) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 104
+[06-Apr-2012 07:11:37] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening '/home/cyr/public_html/linuXautomation/inc/nothing.txt' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 104
+[06-Apr-2012 07:11:37] PHP Warning:  include(/home/cyr/public_html/linuXautomation/inc/nothing.txt) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 104
+[06-Apr-2012 07:11:37] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening '/home/cyr/public_html/linuXautomation/inc/nothing.txt' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 104
+[06-Apr-2012 07:11:37] PHP Warning:  include(/home/cyr/public_html/linuXautomation/inc/nothing.txt) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 104
+[06-Apr-2012 07:11:37] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening '/home/cyr/public_html/linuXautomation/inc/nothing.txt' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 104
+[06-Apr-2012 07:11:37] PHP Warning:  include(/home/cyr/public_html/linuXautomation/inc/nothing.txt) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 104
+[06-Apr-2012 07:11:37] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening '/home/cyr/public_html/linuXautomation/inc/nothing.txt' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 104
+[06-Apr-2012 07:12:27] PHP Notice:  Undefined variable: devicesTxt in /home/cyr/public_html/linuXautomation/inc/setup.txt on line 9
+[06-Apr-2012 07:12:27] PHP Notice:  Undefined variable: devicesTxt in /home/cyr/public_html/linuXautomation/inc/setup.txt on line 108
+[06-Apr-2012 07:12:29] PHP Notice:  Undefined variable: devicesTxt in /home/cyr/public_html/linuXautomation/inc/run.txt on line 13
+[06-Apr-2012 07:12:29] PHP Parse error:  syntax error, unexpected '{' in /home/cyr/public_html/linuXautomation/inc/about.txt on line 3
+[06-Apr-2012 07:17:41] PHP Parse error:  syntax error, unexpected '{' in /home/cyr/public_html/linuXautomation/inc/about.txt on line 3
+[06-Apr-2012 07:17:48] PHP Parse error:  syntax error, unexpected '{' in /home/cyr/public_html/linuXautomation/inc/about.txt on line 3
+[06-Apr-2012 07:19:43] PHP Parse error:  syntax error, unexpected '{' in /home/cyr/public_html/linuXautomation/inc/about.txt on line 3
+[06-Apr-2012 07:23:16] PHP Parse error:  syntax error, unexpected $end in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 118
+[06-Apr-2012 07:23:20] PHP Parse error:  syntax error, unexpected $end in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 118
+[06-Apr-2012 07:23:25] PHP Parse error:  syntax error, unexpected $end in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 118
+[06-Apr-2012 07:23:28] PHP Parse error:  syntax error, unexpected $end in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 118
+[06-Apr-2012 07:24:09] PHP Parse error:  syntax error, unexpected '{' in /home/cyr/public_html/linuXautomation/inc/about.txt on line 3
+[06-Apr-2012 07:28:11] PHP Parse error:  syntax error, unexpected '{' in /home/cyr/public_html/linuXautomation/inc/about.txt on line 3
+[06-Apr-2012 07:29:24] PHP Parse error:  syntax error, unexpected T_STRING in /home/cyr/public_html/linuXautomation/inc/about.txt on line 4
+[06-Apr-2012 07:30:17] PHP Warning:  Unexpected character in input:  '\' (ASCII=92) state=1 in /home/cyr/public_html/linuXautomation/inc/about.txt on line 5
+[06-Apr-2012 07:30:17] PHP Parse error:  syntax error, unexpected T_STRING in /home/cyr/public_html/linuXautomation/inc/about.txt on line 5
+[06-Apr-2012 07:31:47] PHP Warning:  Unexpected character in input:  '\' (ASCII=92) state=1 in /home/cyr/public_html/linuXautomation/inc/about.txt on line 6
+[06-Apr-2012 07:31:47] PHP Parse error:  syntax error, unexpected T_STRING in /home/cyr/public_html/linuXautomation/inc/about.txt on line 6
+[06-Apr-2012 07:32:20] PHP Parse error:  syntax error, unexpected T_STRING in /home/cyr/public_html/linuXautomation/inc/about.txt on line 17
+[06-Apr-2012 10:35:34] PHP Parse error:  syntax error, unexpected '"' in /home/cyr/public_html/linuXautomation/inc/about.txt on line 18
+[07-Apr-2012 07:55:51] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/cyr/public_html/linuXautomation/inc/about.txt on line 15
+[07-Apr-2012 07:56:00] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/cyr/public_html/linuXautomation/inc/about.txt on line 15
+[07-Apr-2012 07:56:34] PHP Notice:  Undefined offset:  3 in /home/cyr/public_html/linuXautomation/inc/about.txt on line 17
+[07-Apr-2012 08:13:22] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/cyr/public_html/linuXautomation/inc/about.txt on line 17
+[07-Apr-2012 08:13:30] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/cyr/public_html/linuXautomation/inc/about.txt on line 17
+[07-Apr-2012 08:15:22] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/cyr/public_html/linuXautomation/inc/about.txt on line 17
+[10-Apr-2012 06:37:35] PHP Parse error:  syntax error, unexpected '{' in /home/cyr/public_html/linuXautomation/inc/run.txt on line 7
+[13-Apr-2012 07:33:54] PHP Parse error:  syntax error, unexpected T_STRING in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 78
+[13-Apr-2012 07:34:26] PHP Parse error:  syntax error, unexpected T_STRING in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 78
+[13-Apr-2012 07:34:30] PHP Parse error:  syntax error, unexpected T_STRING in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 78
+[13-Apr-2012 07:34:45] PHP Parse error:  syntax error, unexpected T_STRING in /home/cyr/public_html/linuXautomation/inc/masterControl.txt on line 78
+[15-Apr-2012 23:11:45] PHP Warning:  copy(/linuXautomation/index.php) [<a href='function.copy'>function.copy</a>]: failed to open stream: No such file or directory in /home/cyr/public_html/linuXautomation/index.php on line 18
+[15-Apr-2012 23:18:59] PHP Warning:  copy(/linuXautomation/index.php) [<a href='function.copy'>function.copy</a>]: failed to open stream: No such file or directory in /home/cyr/public_html/linuXautomation/index.php on line 19
+[16-Apr-2012 23:18:47] PHP Parse error:  syntax error, unexpected T_STRING in /home/cyr/public_html/linuXautomation/inc/run.txt on line 39
+[16-Apr-2012 23:19:15] PHP Parse error:  syntax error, unexpected T_STRING in /home/cyr/public_html/linuXautomation/inc/run.txt on line 39
+[16-Apr-2012 23:21:57] PHP Warning:  Wrong parameter count for split() in /home/cyr/public_html/linuXautomation/inc/run.txt on line 39
+[16-Apr-2012 23:21:57] PHP Warning:  Wrong parameter count for split() in /home/cyr/public_html/linuXautomation/inc/run.txt on line 39
+[16-Apr-2012 23:21:57] PHP Warning:  Wrong parameter count for split() in /home/cyr/public_html/linuXautomation/inc/run.txt on line 39
+[16-Apr-2012 23:21:57] PHP Warning:  Wrong parameter count for split() in /home/cyr/public_html/linuXautomation/inc/run.txt on line 39
+[16-Apr-2012 23:22:32] PHP Warning:  Wrong parameter count for split() in /home/cyr/public_html/linuXautomation/inc/run.txt on line 39
+[16-Apr-2012 23:22:32] PHP Warning:  Wrong parameter count for split() in /home/cyr/public_html/linuXautomation/inc/run.txt on line 39
+[16-Apr-2012 23:22:32] PHP Warning:  Wrong parameter count for split() in /home/cyr/public_html/linuXautomation/inc/run.txt on line 39
+[16-Apr-2012 23:22:32] PHP Warning:  Wrong parameter count for split() in /home/cyr/public_html/linuXautomation/inc/run.txt on line 39
+[16-Apr-2012 23:27:18] PHP Warning:  explode() [<a href='function.explode'>function.explode</a>]: Empty delimiter in /home/cyr/public_html/linuXautomation/inc/run.txt on line 39
+[16-Apr-2012 23:27:18] PHP Warning:  explode() [<a href='function.explode'>function.explode</a>]: Empty delimiter in /home/cyr/public_html/linuXautomation/inc/run.txt on line 39
+[16-Apr-2012 23:27:18] PHP Warning:  explode() [<a href='function.explode'>function.explode</a>]: Empty delimiter in /home/cyr/public_html/linuXautomation/inc/run.txt on line 39
+[16-Apr-2012 23:27:18] PHP Warning:  explode() [<a href='function.explode'>function.explode</a>]: Empty delimiter in /home/cyr/public_html/linuXautomation/inc/run.txt on line 39
+[16-Apr-2012 23:40:28] PHP Parse error:  syntax error, unexpected T_STRING, expecting '(' in /home/cyr/public_html/linuXautomation/inc/run.txt on line 40
+[17-Apr-2012 07:14:37] PHP Parse error:  syntax error, unexpected ':' in /home/cyr/public_html/linuXautomation/inc/run.txt on line 42
+[17-Apr-2012 07:17:58] PHP Parse error:  syntax error, unexpected ':' in /home/cyr/public_html/linuXautomation/inc/run.txt on line 42
+[17-Apr-2012 07:19:48] PHP Parse error:  syntax error, unexpected ':' in /home/cyr/public_html/linuXautomation/inc/run.txt on line 42
+[17-Apr-2012 07:20:02] PHP Parse error:  syntax error, unexpected ':' in /home/cyr/public_html/linuXautomation/inc/run.txt on line 42
+[17-Apr-2012 07:34:55] PHP Parse error:  syntax error, unexpected ':' in /home/cyr/public_html/linuXautomation/inc/run.txt on line 42
+[17-Apr-2012 07:35:23] PHP Parse error:  syntax error, unexpected ':' in /home/cyr/public_html/linuXautomation/inc/run.txt on line 42
+[18-Apr-2012 09:42:33] PHP Warning:  Missing argument 4 for select(), called in /home/cyr/public_html/linuXautomation/inc/run.txt on line 16 and defined in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 39
+[18-Apr-2012 09:42:33] PHP Warning:  Missing argument 5 for select(), called in /home/cyr/public_html/linuXautomation/inc/run.txt on line 16 and defined in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 39
+[18-Apr-2012 09:42:33] PHP Warning:  Missing argument 6 for select(), called in /home/cyr/public_html/linuXautomation/inc/run.txt on line 16 and defined in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 40
+[18-Apr-2012 09:42:33] PHP Warning:  Missing argument 7 for select(), called in /home/cyr/public_html/linuXautomation/inc/run.txt on line 16 and defined in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 40
+[18-Apr-2012 09:42:33] PHP Warning:  Missing argument 8 for select(), called in /home/cyr/public_html/linuXautomation/inc/run.txt on line 16 and defined in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 41
+[18-Apr-2012 09:42:33] PHP Warning:  Missing argument 9 for select(), called in /home/cyr/public_html/linuXautomation/inc/run.txt on line 16 and defined in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 41
+[18-Apr-2012 09:42:33] PHP Warning:  Missing argument 10 for select(), called in /home/cyr/public_html/linuXautomation/inc/run.txt on line 16 and defined in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 42
+[18-Apr-2012 09:42:33] PHP Warning:  Missing argument 11 for select(), called in /home/cyr/public_html/linuXautomation/inc/run.txt on line 16 and defined in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 42
+[18-Apr-2012 09:42:33] PHP Warning:  Missing argument 12 for select(), called in /home/cyr/public_html/linuXautomation/inc/run.txt on line 16 and defined in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 42
+[18-Apr-2012 09:42:33] PHP Notice:  Undefined variable: classA in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 43
+[18-Apr-2012 09:42:33] PHP Notice:  Undefined variable: onEvent in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 43
+[18-Apr-2012 09:42:33] PHP Notice:  Undefined variable: jsFunct in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 43
+[18-Apr-2012 09:42:33] PHP Notice:  Undefined variable: jsArgv in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 43
+[18-Apr-2012 09:42:33] PHP Notice:  Undefined variable: optArray in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 44
+[18-Apr-2012 09:43:59] PHP Warning:  Missing argument 4 for select(), called in /home/cyr/public_html/linuXautomation/inc/run.txt on line 16 and defined in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 39
+[18-Apr-2012 09:43:59] PHP Warning:  Missing argument 5 for select(), called in /home/cyr/public_html/linuXautomation/inc/run.txt on line 16 and defined in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 39
+[18-Apr-2012 09:43:59] PHP Warning:  Missing argument 6 for select(), called in /home/cyr/public_html/linuXautomation/inc/run.txt on line 16 and defined in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 40
+[18-Apr-2012 09:43:59] PHP Warning:  Missing argument 7 for select(), called in /home/cyr/public_html/linuXautomation/inc/run.txt on line 16 and defined in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 40
+[18-Apr-2012 09:43:59] PHP Warning:  Missing argument 8 for select(), called in /home/cyr/public_html/linuXautomation/inc/run.txt on line 16 and defined in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 41
+[18-Apr-2012 09:43:59] PHP Warning:  Missing argument 9 for select(), called in /home/cyr/public_html/linuXautomation/inc/run.txt on line 16 and defined in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 41
+[18-Apr-2012 09:43:59] PHP Warning:  Missing argument 10 for select(), called in /home/cyr/public_html/linuXautomation/inc/run.txt on line 16 and defined in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 42
+[18-Apr-2012 09:43:59] PHP Warning:  Missing argument 11 for select(), called in /home/cyr/public_html/linuXautomation/inc/run.txt on line 16 and defined in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 42
+[18-Apr-2012 09:43:59] PHP Warning:  Missing argument 12 for select(), called in /home/cyr/public_html/linuXautomation/inc/run.txt on line 16 and defined in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 42
+[18-Apr-2012 09:43:59] PHP Notice:  Undefined variable: classA in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 43
+[18-Apr-2012 09:43:59] PHP Notice:  Undefined variable: onEvent in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 43
+[18-Apr-2012 09:43:59] PHP Notice:  Undefined variable: jsFunct in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 43
+[18-Apr-2012 09:43:59] PHP Notice:  Undefined variable: jsArgv in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 43
+[18-Apr-2012 09:43:59] PHP Notice:  Undefined variable: optArray in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 44
+[18-Apr-2012 09:54:06] PHP Notice:  Undefined variable: jsArgv in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 54
+[18-Apr-2012 09:54:06] PHP Notice:  Undefined variable: jsArgv in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 54
+[18-Apr-2012 09:54:06] PHP Notice:  Undefined variable: jsArgv in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 54
+[18-Apr-2012 09:54:06] PHP Notice:  Undefined variable: jsArgv in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 54
+[18-Apr-2012 09:54:07] PHP Notice:  Undefined variable: jsArgv in /home/cyr/public_html/linuXautomation/inc/functions.txt on line 54
+[18-Apr-2012 16:18:40] PHP Parse error:  syntax error, unexpected T_LNUMBER in /home/cyr/public_html/linuXautomation/inc/program.txt on line 28
+[19-Apr-2012 09:24:17] PHP Parse error:  syntax error, unexpected T_DEFAULT in /home/cyr/public_html/linuXautomation/inc/program.txt on line 19
+[19-Apr-2012 09:25:22] PHP Parse error:  syntax error, unexpected T_DEFAULT in /home/cyr/public_html/linuXautomation/inc/program.txt on line 19
+[21-Apr-2012 11:18:55] PHP Parse error:  syntax error, unexpected T_STRING in /home/cyr/public_html/linuXautomation/inc/setup.txt on line 80
+[22-Apr-2012 09:09:39] PHP Parse error:  syntax error, unexpected T_STRING in /home/cyr/public_html/linuXautomation/inc/program.txt on line 20
+[22-Apr-2012 09:09:53] PHP Parse error:  syntax error, unexpected T_STRING in /home/cyr/public_html/linuXautomation/inc/program.txt on line 20
+[22-Apr-2012 09:10:24] PHP Parse error:  syntax error, unexpected ':' in /home/cyr/public_html/linuXautomation/inc/program.txt on line 19
+[22-Apr-2012 09:10:50] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[22-Apr-2012 09:10:50] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36
+[22-Apr-2012 09:14:39] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[22-Apr-2012 09:14:39] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36
+[22-Apr-2012 09:17:18] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[22-Apr-2012 09:17:18] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36
+[22-Apr-2012 09:22:57] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[22-Apr-2012 09:22:57] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36
+[22-Apr-2012 09:25:13] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[22-Apr-2012 09:25:13] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36
+[22-Apr-2012 09:25:32] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[22-Apr-2012 09:25:32] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36
+[22-Apr-2012 09:26:24] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[22-Apr-2012 09:26:24] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36
+[22-Apr-2012 09:29:31] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 28
+[22-Apr-2012 09:29:31] PHP Notice:  Undefined variable: program in /home/cyr/public_html/linuXautomation/inc/run.txt on line 36

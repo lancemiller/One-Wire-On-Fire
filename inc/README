@@ -1,0 +1,80 @@
+	
+#================================================
+# One-Wire-On-Fire: ALPHA VERSION 0.1.0.a
+# One-Wire-On-Fire Copyright (C) 2011 Lance Miller this.is.lance.miller@gmail.com
+# This program is free software: you can redistribute it and/or modify it under the terms of the
+# GNU General Public License as published by the Free Software Foundation, either version 3 of the License.
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details.
+# http://www.one-wire-on-fire.org
+# https://github.com/lancemiller/One-Wire-On-Fire
+#================================================
+
+INSTALL STEPS: 
+1.  Unzip software package, place resulting One-Wire-On-Fire folder 
+    in the path of web server document root (e.g. /var/www).
+2.  Go to http://localhost/One-Wire-On-Fire in web browser
+3.  http://localhost/One-Wire-On-Fire/inc/_ONE-WIRE-ON-FIRE_py.txt is the
+    most unusual file, it is the only file not to be run in the web interface.
+4.a Make a copy of http://localhost/One-Wire-On-Fire/inc/_ONE-WIRE-ON-FIRE_py.txt
+    to something like OneWireOnFire.py and store in a path outside the
+    web server document root. 
+4.b For example copy to $HOME/bin/OneWireOnFire.py   
+   		mkdir ~/bin; \
+   		curl --url http://localhost/One-Wire-On-Fire/inc/_ONE-WIRE-ON-FIRE_py.txt > ~/bin/OneWireOnFire.py; \ 
+   		chmod u+x ~/bin/OneWireOnFire.py; \
+	        ls ~/bin; \	
+		echo "all done";
+5. Go to the SETUP tab in http://localhost/One-Wire-On-Fire to set a few basic parameters, such as giving the 1-Wire
+   devices a human-friendly name ( e.g. wine_cellar_temp ). 
+6. http://www.one-wire-on-fire.org should have a functional (most likely emulating real devices) example of 
+   of a properly running One-Wire-On-Fire install, refer to http://www.one-wire-on-fire.org and navigate through 
+   the site to get general familiarity. 
+
+
+One-Wire-On-Fire is a web and command line based user interface to 1-Wire devices. Written in 
+PHP/Python/HTML/Javacript for use on any device that runs a Unix/Linux variant with Python 
+and serves PHP web pages. 
+
+One-Wire-On-Fire accesses an ACII interface to 1Wire devices. This means One-Wire-On-Fire accesses 
+a plain old directory file structure with a typical line looking like this: 
+/mnt/1wire/22.20F21A000000/temperature/38.075, 
+reading these device/parameter values, and in some cases setting an ON/OFF circuit by 
+writing an 0 or 1 are all that this software does to events out there on system bus. 
+The power and function of One-Wire-On-Fire comes in being able to name the devices a human-friendly name,
+write simple programs[1] and run/stop those same stored programs, all within a web browser.
+
+[1]example: while currentTime < runTime : if OutdoorA temp is less than 30: set FridgeB to OFF
+
+
+Note on origin of project: The proprietors of WiseAss Brewing Company (serving microbrews to 
+the Puget Sound region of Washington State) Ryan Hodges and Kurt Forsberg conceived of the need for automation of
+their brewing process and wanted Linux coupled with 1wire devices. Kurt Fosberg custom made devices 
+and coded control in the Bash programming language. After several years experimenting with 1-Wire, Linux based control,
+and posting to their site linuxautomation.org, they asked Lance Miller to be the coder for a web-based UI 
+in late 2011 with a view to present at LinuxFest Northwest 2012.
+
+
+1Wire Briefly Explained
+
+Monitoring
+1-wire is great for low-cost monitoring of environmental conditions (temperature, light levels, 
+humidity, moisture,...). There are 3rd party devices that can measure more elaborate conditions 
+(Thermocouples for extreme temperatures, ultraviolet, wind-speed, counters. Typical uses include 
+computer case and server room monitoring, weather stations, soil conditions, aquarium and vehicle monitoring.
+
+Control
+There are numerous 1-wire chips that have on-off switches (either 1,2,or 8 switches per chip). 
+High current circuits can be built using relays. There is also 3rd party devices that have 
+pulse-width modulation (PWM) counters and other controls, also under 1-wire supervision.
+
+Instrumentation
+The battery monitoring chips have (besides temperature) current and voltage sensors in different ranges.
+
+Limitations
+In fact, the biggest constraint is usually speed.  Fast process control and momentary contacts are difficult. 
+Instead, 1-wire might be a good supervisory/monitoring/alarm system on top of process control. 
+
+
+

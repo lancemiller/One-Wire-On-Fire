@@ -1,0 +1,17 @@
+
+
+########################################
+#!/usr/bin/env bash
+# create tar file and copy to specific 
+# directory for sharing on web.
+# does it twice so most up to date
+# tar file is tarred and shared
+var0=0
+LIMIT=2
+while [ "$var0" -lt "$LIMIT" ]
+do
+	tar cfzv One-Wire-On-Fire.tar.gz One-Wire-On-Fire/
+	cp One-Wire-On-Fire.tar.gz One-Wire-On-Fire/inc/
+	var0=$((var0 + 1))
+done
+########################################

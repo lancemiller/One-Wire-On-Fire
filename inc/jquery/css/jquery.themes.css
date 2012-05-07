@@ -1,0 +1,43 @@
+/* jQuery Themes styles */
+.themes_list {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+.themes_list {
+	float: left;
+}
+.themes_list li {
+	float: left;
+	width: 120px;
+	height: 20px;
+	padding: 1px;
+	overflow: hidden;
+}
+.themes_list li a {
+	white-space: nowrap;
+}
+.themes_compact li {
+	width: 24px;
+	height: 20px;
+}
+.themes_list span {
+	display: inline-block;
+	width: 23px;
+	height: 20px;
+	vertical-align: top;
+}
+.themes_list img {
+	border: none;
+	vertical-align: top;
+}
+.themes_preview {
+	display: none;
+	position: absolute;
+	z-index: 20;
+	padding: 2px;
+	text-align: center;
+}
+.themes_preview img {
+	vertical-align: top;
+}
