@@ -3,7 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<<<<<<< HEAD
 <title>one-wire-on-fire.org : One-Wire-On-Fire 1-Wire Automation Management Tool</title>
+=======
+<title>OpenSource-Automation.com : One-Wire-On-Fire Software Suite</title>
+>>>>>>> 29187ae789c76152354c250f0d8b9904d0c05a1f
 <meta name="license" content="This entire software suite and document set is licensed under the GNU GENERAL PUBLIC LICENSE Version 3" />
 <meta name="description" content="One-Wire-On-Fire is a free software suite providing web based programming and control of 1-Wire devices. The software is licensed for free sharing with attribution to project founder Lance Miller. 
 GNU GENERAL PUBLIC LICENSE Version 3" />
@@ -146,6 +150,7 @@ unset($inputArray,$item);
 ?>
 
 </td></tr></table>
+<<<<<<< HEAD
 <center><h1>One-Wire-On-Fire: ALPHA VERSION 0.1.0.a
 <img src="inc/gplv3-88x31.png" />
 </h1></center>
@@ -158,6 +163,12 @@ Source code collaboration:
 https://github.com/lancemiller/One-Wire-On-Fire
 </a>
 </center>
+=======
+<center><h1>One-Wire-On-Fire:BETA VERSION 
+<img src="inc/gplv3-88x31.png" />
+</h1></center>
+<div class="tiny">
+>>>>>>> 29187ae789c76152354c250f0d8b9904d0c05a1f
 <p>
 Copyright (C) 2011 : Lance Miller this.is.lance.miller@gmail.com 
 </p><p>

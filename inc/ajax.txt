@@ -16,10 +16,15 @@ if(isset($_POST['mode']) || isset($_GET['mode']) ) {
 
 	if($_POST['mode']=='emulateCommand' || $_GET['mode']=='emulateCommand') { $emulate=""; 
 			isset($_POST['emulate']) ? $emulate = $_POST['emulate'] : $emulate = $_GET['emulate'];
+<<<<<<< HEAD
 			$myFile= $includesDir."/emulateCommand.txt"; file_put_contents($myFile,$emulate);
 			 print "emulate changed to ".$emulate;  
 	       		// if($emulating=="true") { recurse_copy($includesDir."/emulateFiles/", $includesDir."/"); }
 			die();                                                                   
+=======
+			$myFile= $includesDir."/emulateCommand.txt"; file_put_contents($myFile,$emulate); print "emulate changed to ".$emulate;  
+	       die();                                                                   
+>>>>>>> 29187ae789c76152354c250f0d8b9904d0c05a1f
 	}
 
 	if($_POST['mode']=='getProgramList' || $_GET['mode']=='getProgramList') {

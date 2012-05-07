@@ -25,7 +25,10 @@ GNU General Public License for more details.
 <h3>Source code:</h3>
 <ul>
 <?php
+<<<<<<< HEAD
 linkFormat("inc/README","[TXT]");
+=======
+>>>>>>> 29187ae789c76152354c250f0d8b9904d0c05a1f
 linkFormat("inc/","[DIR] Link to directory containing all text files referenced below.");
 linkFormat("inc/_ONE-WIRE-ON-FIRE_py.txt","[CLI PYTHON] This is the main file of the software suite. It is a command line Python program that accepts input set by the web interface and reads and writes to the 1wire ASCII interface.");    
 linkFormat("inc/index.txt","[WEB UI] Intitial PHP file that sets variables and includes masterControl.txt");

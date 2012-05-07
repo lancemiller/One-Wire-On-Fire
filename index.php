@@ -14,7 +14,10 @@ $devicesTxt = "devices.txt";
 $deviceNickNamesTxt = "deviceNickNames.txt";
 $currentStateTxt = "currentState.txt";
 $deviceShortListTxt = "deviceShortList.txt";
+<<<<<<< HEAD
 $emulateCommandTxt = "emulateCommand.txt";
+=======
+>>>>>>> 29187ae789c76152354c250f0d8b9904d0c05a1f
 $ajaxUrl="ajax.php";
 copy("index.php", $includesDir."/index.txt");
 chdir($includesDir) or die("no ".$includesDir." directory, which is where this app was designed to keep the bulk of its files. "); 
@@ -29,8 +32,15 @@ foreach($_POST as $name => $value) { $current .= "\nPOST: ".$name." : ".$value; 
 file_put_contents($accessLogTxt, $current);
 unset($current);
 file_exists("functions.txt") ? include("functions.txt")  : die("no ".$includesDir."/functions.txt file");
+<<<<<<< HEAD
 $emulating = file_get_contents($emulateCommandTxt);
 if($emulating=="true") { recurse_copy($includesDir."/emulateFiles/", $includesDir."/"); }
+=======
+$EMULATING=True;
+if($EMULATING==True) {
+recurse_copy($includesDir."/emulateFiles/", $includesDir."/");
+											}
+>>>>>>> 29187ae789c76152354c250f0d8b9904d0c05a1f
 file_exists("masterControl.txt") ? include("masterControl.txt") : die("no ".$includesDir."/masterControl.txt file");
 die();
 ?>

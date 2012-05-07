@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+<<<<<<< HEAD
 #================================================
 # One-Wire-On-Fire: ALPHA VERSION 0.1.0.a
 # One-Wire-On-Fire Copyright (C) 2011 Lance Miller this.is.lance.miller@gmail.com
@@ -19,10 +20,33 @@ import sys
 import time
 import threading
 import string
+=======
+import os
+#================================================
+# One-Wire-On-Fire by Lance Miller this.is.lance.miller@gmail.com December 2011 
+# licensed under a Creative Commons Attribution 3.0 Unported License.
+# http://www.opensource-automation.com/
+#================================================
+# EDIT THIS VARIABLE CALLED wwwRootUserEdited 
+# TO MATCH YOUR WEB ROOT DIRECTORY. 
+wwwRootUserEdited = os.path.join("/","var","www")  
+# PLEASE CREATE DIRECTORIES One-Wire-On-Fire/inc 
+# IN YOUR WEB ROOT DIRECTORY
+global remoteURL
+remoteUrl = "localhost"
+#================================================
+
+
+import time
+import threading
+import string
+import sys
+>>>>>>> 29187ae789c76152354c250f0d8b9904d0c05a1f
 import math
 import shutil
 import urllib2
 import datetime
+<<<<<<< HEAD
 import traceback
 def formatExceptionInfo(maxTBlevel=5):
          cla, exc, trbk = sys.exc_info()
@@ -33,6 +57,8 @@ def formatExceptionInfo(maxTBlevel=5):
              excArgs = "<no args>"
          excTb = traceback.format_tb(trbk, maxTBlevel)
          return (excName, excArgs, excTb)
+=======
+>>>>>>> 29187ae789c76152354c250f0d8b9904d0c05a1f
 
 global message
 global defaultMessage
@@ -69,6 +95,7 @@ deviceShortListTxt = "deviceShortList.txt"
 global emulateCommandTxt
 emulateCommandTxt = "emulateCommand.txt"
 
+<<<<<<< HEAD
 def returnUrltext(url):
 	try:
 		file = urllib2.urlopen(url)
@@ -89,12 +116,19 @@ except:
 	print "and be sure localhost web server and PHP are serving pages. "
 	os.system('kill %d' % os.getpid())
 
+=======
+global wwwRoot
+>>>>>>> 29187ae789c76152354c250f0d8b9904d0c05a1f
 global myOutputDir
 global myRemoteDir
 global myOutputDirA
 global myOutputDirB
 myOutputDirA="One-Wire-On-Fire"
 myOutputDirB="inc"
+<<<<<<< HEAD
+=======
+wwwRoot = wwwRootUserEdited
+>>>>>>> 29187ae789c76152354c250f0d8b9904d0c05a1f
 myOutputDir = os.path.join(wwwRoot,myOutputDirA,myOutputDirB)	
 myRemoteDir = "http://"+remoteUrl+"/"+myOutputDirA+"/"+myOutputDirB+"/"
 global emulateCommandUrl
@@ -108,6 +142,19 @@ def properExit():
 	os.system('kill %d' % os.getpid())
 
 
+<<<<<<< HEAD
+=======
+def returnUrltext(url):
+	try:
+		f = urllib2.urlopen(url)
+		output = f.read()
+	        f.close()
+	        unset(f)	
+		return output	
+	except:
+		print "\nurl: "+url+" "+"is unreachable\n"
+
+>>>>>>> 29187ae789c76152354c250f0d8b9904d0c05a1f
 def getEmulateCommand():
 	global emulateCommandUrl
         return returnUrltext(emulateCommandUrl)
@@ -137,7 +184,11 @@ if os.path.exists(myOutputDir):
 	deviceNickNamesTxt = os.path.join(myOutputDir,deviceNickNamesTxt)
 
 else: 
+<<<<<<< HEAD
 	about(19)
+=======
+	about(15)
+>>>>>>> 29187ae789c76152354c250f0d8b9904d0c05a1f
 	print "\n\t" + myOutputDir + " does not exist, please create directory so " + sys.argv[0] + " has a dir to write files. \n\t\tSincerely, Skynet\n" 
 	properExit()	
 
@@ -475,7 +526,11 @@ def mainMenu(input):
 		if menu_selection == 0:
 			properExit()	
 		if menu_selection == 1:
+<<<<<<< HEAD
 			about(12)
+=======
+			about(7)
+>>>>>>> 29187ae789c76152354c250f0d8b9904d0c05a1f
 		if menu_selection == 2:
        			c = CountDownExec(2, probeWrapper)
        			c.start()
